@@ -1,0 +1,6 @@
+package com.firstservice.app.controller;
+
+@RestController
+public class GreetingController {
+
+}

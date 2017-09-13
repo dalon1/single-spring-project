@@ -1,0 +1,5 @@
+package com.firstservice.app.controller;
+
+public class GreetingController {
+
+}

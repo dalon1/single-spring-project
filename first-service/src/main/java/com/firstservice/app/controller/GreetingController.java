@@ -1,0 +1,24 @@
+package com.firstservice.app.controller;
+
+import java.util.concurrent.atomic.AtomicInteger;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.firstservice.app.model.Greeting;
+
+@RestController // @Controller + @ResponseBody
+public class GreetingController {
+
+	public static final String template = "Hello, %s!";
+	
+	@RequestMapping(value = "/greeting", method = RequestMethod.GET)
+	public Greeting getGreeting(@RequestParam(
+			value = "name", defaultValue = "World") String name) {
+		Greeting greeting = new Greeting();
+		greeting.setId(new AtomicInteger().incrementAndGet());
+		greeting.setContent(String.format(template, name));
+		return greeting;
+	}
+}
